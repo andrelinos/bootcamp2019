@@ -116,7 +116,7 @@ server.put('/projects/:id/tasks', checkId, (req, res) => {
 
     projects[req.proId].tasks.splice(req.tasks, 1);
 
-    projects[req.proId].tasks.push(tasks);
+    projects[req.proId].tasks = tasks;
 
     return res.json(projects);
 });

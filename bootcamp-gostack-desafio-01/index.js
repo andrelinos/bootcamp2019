@@ -114,8 +114,6 @@ server.put('/projects/:id', checkId, (req, res) => {
 server.put('/projects/:id/tasks', checkId, (req, res) => {
     const { tasks } = req.body;
 
-    projects[req.proId].tasks.splice(req.tasks, 1);
-
     projects[req.proId].tasks = tasks;
 
     return res.json(projects);
@@ -132,13 +130,11 @@ server.put('/projects/:id/tasks', checkId, (req, res) => {
 
 // Apagar tarefas (tasks) no projeto
 server.delete('/projects/:id/tasks', checkId, (req, res) => {
-    //  const { id } = req.params;
-      const { tasks } = req.body;
-  
+
       projects[req.proId].tasks.splice(req.tasks, 1);
       
-      return res.send('Success...');
-  });
+      return res.json(projects);
+});
 
 // Apagar um projeto 
 server.delete('/projects/:id', checkId, (req, res) => {

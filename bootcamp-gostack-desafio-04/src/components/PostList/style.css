@@ -1,0 +1,10 @@
+div.PostList {
+  display: flex;
+  justify-content: center;
+}
+
+div.PostListContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+}

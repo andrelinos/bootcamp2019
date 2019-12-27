@@ -1,0 +1,57 @@
+div.Post div.PostContainer {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  max-width: 700px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+div.Post div.PostContainer div.header {
+  display: flex;
+  padding-bottom: 15px;
+}
+
+div.Post div.PostContainer div.header a {
+  color: #385898;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div.Post div.PostContainer div.header a:hover {
+  text-decoration: underline;
+}
+
+div.Post div.PostContainer div.header img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+div.Post div.PostContainer div.header div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+div.Post div.PostContainer div.header div b {
+  font-size: 13px;
+  color: #4a4a4a;
+}
+
+div.Post div.PostContainer div.header div small {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+div.Post div.PostContainer div.content {
+  font-size: 14px;
+  color: #3e3e3e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,38 @@
+div.CommentContainer {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+div.CommentContainer:last-child {
+  margin-bottom: 0;
+}
+
+div.CommentContainer img {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  min-height: 32px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+}
+
+div.CommentContainer div.CommentContent {
+  background-color: #f2f3f5;
+  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: #3e3e3e;
+  font-size: 13px;
+}
+
+div.CommentContainer div.CommentContent a {
+  color: #385898;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div.CommentContainer div.CommentContent a:hover {
+  text-decoration: underline;
+}

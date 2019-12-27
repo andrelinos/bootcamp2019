@@ -33,3 +33,7 @@
 # Comandos para criar
 - yarn build (referente ao scripts em package.json - modo produção) 
 - yarn dev (referente ao scripts em package.json - modo dev) 
+
+![alt text](https://github.com/andrelinos/bootcamp-gostack-desafio-04/blob/master/.github/components.png)
+
+

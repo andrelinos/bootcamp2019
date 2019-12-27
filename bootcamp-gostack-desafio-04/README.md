@@ -34,6 +34,6 @@
 - yarn build (referente ao scripts em package.json - modo produção) 
 - yarn dev (referente ao scripts em package.json - modo dev) 
 
-![alt text](https://github.com/andrelinos/bootcamp-gostack-desafio-04/blob/master/.github/components.png)
+![alt text](https://github.com/andrelinos/bootcamp2019/blob/master/bootcamp-gostack-desafio-04/Screenshot_20191226_235344.png)
 
 

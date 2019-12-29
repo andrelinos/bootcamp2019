@@ -26,7 +26,7 @@
 # Configurações
 
 ## .editorconfig
-  root = true
+```  root = true
 
   [*]
   end_of_line = lf
@@ -35,8 +35,9 @@
   charset = utf-8
   trim_trailing_whitespace = true
   insert_final_newline = true
-
+```
 ## eslint
+```
 - yarn eslint --init
 -- To check syntax, find problems, and enforce code style
 -- JavaScript modules (import/export)
@@ -48,3 +49,4 @@
 -- JavaScript
 -- Do you want to downgrade? (Y/n) Y
 -- ? Would you like to install them now with npm? (Y/n) Y
+```

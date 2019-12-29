@@ -1,3 +1,9 @@
+# Desafio 05 - BootCamp GoStack 2019
+- Criado o form para inserir repositórios
+- Verificação de campo vasio
+- Verificação de repositórios duplicados
+
+
 # Criação do projeto
 - yarn create react-app nomepasta
 
@@ -20,7 +26,7 @@
 # Configurações
 
 ## .editorconfig
-  root = true
+```  root = true
 
   [*]
   end_of_line = lf
@@ -29,8 +35,9 @@
   charset = utf-8
   trim_trailing_whitespace = true
   insert_final_newline = true
-
+```
 ## eslint
+```
 - yarn eslint --init
 -- To check syntax, find problems, and enforce code style
 -- JavaScript modules (import/export)
@@ -42,3 +49,4 @@
 -- JavaScript
 -- Do you want to downgrade? (Y/n) Y
 -- ? Would you like to install them now with npm? (Y/n) Y
+```

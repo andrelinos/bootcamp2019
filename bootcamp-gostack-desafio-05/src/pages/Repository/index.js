@@ -72,26 +72,11 @@ export default class Repository extends Component {
 
         <IssuesList>
           <FormControl onSubmit={this.handleSubmit}>
-            <InputLabel htmlFor="issues-state">Selecione </InputLabel>
-            <select
-              native
-              value="all"
-              //  onChange={('state')}
-              inputProps={{
-                name: 'state',
-                id: 'issues-state',
-              }}
-            >
-              <option value="" />
-              <option value="https://api.github.com/repos/rocketseat/unform/issues?state=all">
-                all
-              </option>
-              <option value="https://api.github.com/repos/rocketseat/unform/issues?state=open">
-                open
-              </option>
-              <option value="https://api.github.com/repos/rocketseat/unform/issues?state=closed">
-                closed
-              </option>
+            <InputLabel htmlFor="cbIssues">Selecione </InputLabel>
+            <select id="cbIssues">
+              <option value="all">all</option>
+              <option value="open">open</option>
+              <option value="closed">closed</option>
             </select>
           </FormControl>
           {issues.map(issue => (

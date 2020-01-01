@@ -68,9 +68,8 @@ export const Owner = styled.header`
   }
 `;
 export const IssuesList = styled.ul`
-  padding-top: 30px;
-  margin-top: 30px;
-  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
   list-style: none;
 
   li {
@@ -148,4 +147,43 @@ export const FormControl = styled.form`
 `;
 export const InputLabel = styled.label`
   margin-right: 5px;
+`;
+export const StateIssues = styled.ul`
+  display: flex;
+  background: #eee;
+  font-size: 1em;
+  padding: 5px;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 400;
+  margin-top: 27px;
+
+  select {
+    width: 120px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    background: #eee;
+    margin-left: 10px;
+    padding: 3px;
+  }
+`;
+
+export const Page = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+
+  button {
+    width: 120px;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+  }
+`;
+
+export const PageTitle = styled.div`
+  font-size: 2em;
+  margin-left: 10px;
+  margin-right: 10px;
 `;

@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  FaGithubAlt,
-  FaPlus,
-  FaSpinner,
-  FaEdit,
-  FaWindowClose,
-} from 'react-icons/fa';
+import { FaGithubAlt, FaPlus, FaSpinner, FaWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
@@ -46,10 +40,6 @@ export default class Main extends Component {
     this.setState({ newRepo: e.target.value });
   };
 
-  handleEdit = (e, index) => {
-    console.log('Edit', index);
-  };
-
   handleDelete = (e, index) => {
     console.log('Delete', index);
   };
@@ -62,11 +52,12 @@ export default class Main extends Component {
     const { newRepo, repositories } = this.state;
 
     // if empty field
-    if (newRepo === '') throw new Error('Informe um repositório.');
+    if (newRepo === '')
+      throw new Error('Type a repo name to add for repository list.');
 
     // Verify if has repo
     const hasRepo = repositories.find(r => r.name === newRepo);
-    if (hasRepo) throw new Error('Repositório duplicado!');
+    if (hasRepo) throw new Error('Duplicate repository!');
 
     try {
       const response = await api.get(`/repos/${newRepo}`);
@@ -99,14 +90,14 @@ export default class Main extends Component {
       <Container>
         <h1>
           <FaGithubAlt />
-          Repositórios
+          Repositories
         </h1>
 
         <Form newRepoError={newRepoError} onSubmit={this.handleSubmit}>
           <>
             <input
               type="text"
-              placeholder="Adicionar repositório"
+              placeholder="Type a repository name to add..."
               value={newRepo}
               onChange={this.handleInputChange}
             />
@@ -119,7 +110,7 @@ export default class Main extends Component {
               )}
             </SubmitButton>
           </>
-          <span>Digite um repositório válido!</span>
+          <span>Type a valid repository!</span>
         </Form>
 
         <List>
@@ -128,12 +119,8 @@ export default class Main extends Component {
               <span>{repository.name}</span>
               <RepoOpt>
                 <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                  Detalhes
+                  Details
                 </Link>
-                <FaEdit
-                  className="edit"
-                  onClick={e => this.handleEdit(e, repository.name)}
-                />
                 <FaWindowClose
                   className="delete"
                   onClick={e => this.handleDelete(e, repository.name)}

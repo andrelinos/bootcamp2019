@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
-import PropTypes from 'prop-types';
 import { FaSpinner } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
@@ -11,8 +10,9 @@ import {
   Rotate,
   Owner,
   IssuesList,
-  FormControl,
-  InputLabel,
+  StateIssues,
+  Page,
+  PageTitle,
 } from './styles';
 
 export default class Repository extends Component {
@@ -21,20 +21,26 @@ export default class Repository extends Component {
     this.state = {
       repository: {},
       issues: [],
-      loading: true,
+      state: 'open',
+      page: 1,
+      loading: 1,
     };
   }
 
   async componentDidMount() {
     const { match } = this.props;
 
+    const { state, page } = this.state;
+
     const repoName = decodeURIComponent(match.params.repository);
 
+    // Execute all promisses in the same time
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
       api.get(`/repos/${repoName}/issues`, {
         params: {
-          state: 'open',
+          state,
+          page,
           per_page: 5,
         },
       }),
@@ -43,13 +49,71 @@ export default class Repository extends Component {
     this.setState({
       repository: repository.data,
       issues: issues.data,
-      loading: false,
+      loading: 0,
     });
   }
 
+  handleInputChange = async e => {
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const state = e.target.value;
+
+    const { page } = this.state;
+
+    const response = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        page,
+        per_page: 5,
+        loading: 1,
+      },
+    });
+    this.setState({
+      page: 1, // return for first page when changed issue state
+      state,
+      issues: response.data,
+      loading: 0,
+    });
+  };
+
+  // Create pagination issues
+  handlePage = async e => {
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const pageTransition = e.target.value;
+    const { state } = this.state;
+
+    let { page } = this.state;
+
+    if (pageTransition === 'next') {
+      page += 1;
+    } else {
+      page -= 1;
+    }
+
+    const response = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        page,
+        per_page: 5,
+      },
+    });
+
+    console.log(this.page.length);
+
+    this.setState({
+      state,
+      page,
+      issues: response.data,
+    });
+  };
+
   render() {
-    // eslint-disable-next-line
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, page } = this.state;
 
     if (loading) {
       return (
@@ -64,21 +128,22 @@ export default class Repository extends Component {
     return (
       <Container>
         <Owner>
-          <Link to="/">Voltar aos repositórios</Link>
-          <img src={repository.owner.avatar_url} alt={repository.owner.name} />
+          <Link to="/">Back to repository list</Link>
+          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
 
+        <StateIssues>
+          <div>Issue State</div>
+          <select onChange={this.handleInputChange}>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+            <option value="all">All</option>
+          </select>
+        </StateIssues>
+
         <IssuesList>
-          <FormControl onSubmit={this.handleSubmit}>
-            <InputLabel htmlFor="cbIssues">Selecione </InputLabel>
-            <select id="cbIssues">
-              <option value="all">all</option>
-              <option value="open">open</option>
-              <option value="closed">closed</option>
-            </select>
-          </FormControl>
           {issues.map(issue => (
             <li key={String(issue.id)}>
               <img src={issue.user.avatar_url} alt={issue.user.login} />
@@ -94,11 +159,32 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssuesList>
+
+        <Page>
+          <button
+            className="button-p"
+            type="button"
+            onClick={this.handlePage}
+            value="last"
+            disabled={page < 2}
+          >
+            Previous Page
+          </button>
+          <PageTitle>{page}</PageTitle>
+          <button
+            className="button-n"
+            type="button"
+            onClick={this.handlePage}
+            value="next"
+            disabled={page >= this.handlePage}
+          >
+            Next Page
+          </button>
+        </Page>
       </Container>
     );
   }
 }
-
 Repository.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({

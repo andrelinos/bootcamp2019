@@ -96,14 +96,8 @@ export const RepoOpt = styled.div`
   flex-direction: row;
   align-items: center;
 
-  .edit {
-    margin-left: 10px;
-    margin-right: 3px;
-    color: #3498db;
-    cursor: pointer;
-  }
-
   .delete {
+    margin-left: 10px;
     color: #ff7675;
     cursor: pointer;
   }

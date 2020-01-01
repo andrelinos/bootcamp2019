@@ -103,8 +103,6 @@ export default class Repository extends Component {
       },
     });
 
-    console.log(this.page.length);
-
     this.setState({
       state,
       page,
@@ -124,6 +122,7 @@ export default class Repository extends Component {
         </Loading>
       );
     }
+    console.log(issues.length);
 
     return (
       <Container>
@@ -133,7 +132,6 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-
         <StateIssues>
           <div>Issue State</div>
           <select onChange={this.handleInputChange}>
@@ -142,7 +140,6 @@ export default class Repository extends Component {
             <option value="all">All</option>
           </select>
         </StateIssues>
-
         <IssuesList>
           {issues.map(issue => (
             <li key={String(issue.id)}>
@@ -159,32 +156,37 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssuesList>
-
         <Page>
-          <button
-            className="button-p"
-            type="button"
-            onClick={this.handlePage}
-            value="last"
-            disabled={page < 2}
-          >
-            Previous Page
-          </button>
+          {(page !== 1 || issues.length < 5) && (
+            <button
+              className="button-p"
+              type="button"
+              onClick={this.handlePage}
+              value="last"
+              disabled={page < 2}
+            >
+              Previous Page
+            </button>
+          )}
           <PageTitle>{page}</PageTitle>
-          <button
-            className="button-n"
-            type="button"
-            onClick={this.handlePage}
-            value="next"
-            disabled={page >= this.handlePage}
-          >
-            Next Page
-          </button>
+
+          {issues.length >= 5 && (
+            <button
+              className="button-n"
+              type="button"
+              onClick={this.handlePage}
+              value="next"
+              //  disabled={page > issues.length}
+            >
+              Next Page
+            </button>
+          )}
         </Page>
       </Container>
     );
   }
 }
+
 Repository.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({

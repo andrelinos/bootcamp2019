@@ -24,6 +24,74 @@
 - yarn add prop-types
 - yarn add react-native-webview
 
+#Configurações personalizada
+## .prettierrc
+```{
+  "singleQuote": true,
+  "trailingComma": "es5"
+}```
+
+## .eslintrc.js
+``` 
+module.exports = {
+  env: {
+    es6: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
+    'prettier/react'
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    __DEV__: 'readonly',
+  },
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    'prettier'
+  ],
+  rules: {
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': ['off',
+    'property assignment'],
+    'react/static-property-placement': ['error',
+    'static public field'],
+    'react/sort-comp': 'off',
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': [
+      'warn',
+      {
+        extensions: ['.jsx', '.js']
+      }
+    ],
+    'import/prefer-default-export': 'off'
+  },
+};
+```
+
+## .editorconfig
+```
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+```
+
+
 # Imprementações para Android
 - implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
 - implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'

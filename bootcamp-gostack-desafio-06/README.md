@@ -26,10 +26,12 @@
 
 #Configurações personalizada
 ## .prettierrc
-*{
+```
+{
   "singleQuote": true,
   "trailingComma": "es5"
-}*
+}
+```
 
 ## .eslintrc.js
 *

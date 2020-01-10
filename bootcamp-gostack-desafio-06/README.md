@@ -34,7 +34,7 @@
 ```
 
 ## .eslintrc.js
-*
+```
 module.exports = {
   env: {
     es6: true,
@@ -79,7 +79,7 @@ module.exports = {
     'import/prefer-default-export': 'off'
   },
 };
-*
+```
 
 ## .editorconfig
 ```

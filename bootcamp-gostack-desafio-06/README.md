@@ -1,5 +1,7 @@
 # Instalações iniciais
-- react-native init nomepasta
+```
+react-native init nomepasta
+```
 
 # Intens adicionado
 ```

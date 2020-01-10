@@ -3,6 +3,8 @@ import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 
+// import Repo from '../Repo';
+
 import {
   Container,
   Header,
@@ -96,7 +98,6 @@ export default class User extends Component {
   handleNavigate = repository => {
     const { navigation } = this.props;
 
-    console.tron.log(navigation);
     navigation.navigate('Repo', { repository });
   };
 

@@ -1,24 +1,21 @@
-import React, { Component } from 'react-native';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { WebView } from 'react-native-webview';
 
-export default class Repo extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam('repository').name,
-  });
+// import { WebView } from 'react-native-webview';
 
-  static propTypes = {
-    navigation: PropTypes.shape({
-      getParam: PropTypes.func,
-    }).isRequired,
-  };
+import { Browser } from './styles';
 
-  render() {
-    const { navigation } = this.props;
-    const repository = navigation.getParam('repository');
+export default function Repo({ navigation }) {
+  const repository = navigation.getParam('repository');
 
-    return (
-      <WebView source={{ uri: repository.html_url }} style={{ flex: 1 }} />
-    );
-  }
+  return <Browser source={{ uri: repository.html_url }} />;
 }
+Repo.navigationOptions = ({ navigation }) => ({
+  title: navigation.getParam('repository').name,
+});
+
+Repo.propTypes = {
+  navigation: PropTypes.shape({
+    getParam: PropTypes.func,
+  }).isRequired,
+};

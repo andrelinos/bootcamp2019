@@ -26,13 +26,13 @@
 
 #Configurações personalizada
 ## .prettierrc
-```{
+*{
   "singleQuote": true,
   "trailingComma": "es5"
-}```
+}*
 
 ## .eslintrc.js
-``` 
+*
 module.exports = {
   env: {
     es6: true,
@@ -77,7 +77,7 @@ module.exports = {
     'import/prefer-default-export': 'off'
   },
 };
-```
+*
 
 ## .editorconfig
 ```

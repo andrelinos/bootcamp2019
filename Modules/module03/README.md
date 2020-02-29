@@ -17,7 +17,7 @@
   - mailtrap.io // servidor de e-mail para testes de envio de e-mail para cancelamentos
   - sentry.io // Usado para receber relatório dos erros da aplicação
 
-# Aplicatiovos para visualizar banco de dados
+# Aplicativos para visualizar banco de dados
   - Postbird // visualiza o banco de dados de modo geral
   - MongoDB Compas // visualiza o banco de dados dos agendamentos
 

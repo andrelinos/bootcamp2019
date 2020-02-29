@@ -27,32 +27,32 @@ Dicas de alguns erros:
 
 # A verificar
   - Não permitir cancelar mais de uma vez o mesmo agendamento
-  
 
-##Rotas 
+
+## Rotas
 - ListUser: {{ base_url  }}/users
 - CreateUser: {{ base_url  }}/users
 - Login: {{ base_url  }}/sessions
 - UpdateUser: {{ base_url  }}/users
 - Files: {{ base_url  }}/files
 
-##Parâmetros: 
-: Login: 
+## Parâmetros:
+- Login:
 {
 	"email":"user@site.com",
 	"password": "123456"
 }
 
-: CreateUser:
+- CreateUser:
 {
 	"name":"User Name"	,
 	"email":"user@site.com",
 	"password":"123456"
 }
 
-: UpdateUser: 
+- UpdateUser:
 {
-	"name":"User Name"	,
+	"name":"User Name",
 	"email":"user@site.com",
 	"oldPassword": "123456",
 	"password": "123456789",

@@ -38,23 +38,32 @@ Dicas de alguns erros:
 
 ## Parâmetros:
 - Login:
+
 {
+
 	"email":"user@site.com",
 	"password": "123456"
+	
 }
 
 - CreateUser:
+
 {
+
 	"name":"User Name"	,
 	"email":"user@site.com",
 	"password":"123456"
+	
 }
 
 - UpdateUser:
+
 {
+
 	"name":"User Name",
 	"email":"user@site.com",
 	"oldPassword": "123456",
 	"password": "123456789",
 	"confirmPassword": "123456789"
+	
 }
